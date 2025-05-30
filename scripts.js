@@ -1,15 +1,18 @@
-// A list of provinces:
-const provinces = ['Western Cape', 'Gauteng', 'Northern Cape', 'Eastern Cape', 'KwaZulu-Natal', 'Free State']
+import { provinces, names, products } from "./data.js"
 
-// A list of names:
-const names = ['Ashwin', 'Sibongile', 'Jan-Hendrik', 'Sifso', 'Shailen', 'Frikkie']
+// FIRST EXERCISE
+// Manipulate data using the JavaScript's powerful array methods 
+// like forEach, map, filter, reduce, and more, to perform a variety of tasks.
 
-// A list of products with prices:
-const products = [
-  { product: 'banana', price: "2" },
-  { product: 'mango', price: 6 },
-  { product: 'potato', price: ' ' },
-  { product: 'avocado', price: "8" },
-  { product: 'coffee', price: 10 },
-  { product: 'tea', price: '' },
-]
+// 1. ForEach Basics
+console.log(`NAMES:`); 
+names.forEach(name => console.log(`- ` + name)); // log each name to the console
+
+console.log(`PROVINCE:`)
+provinces.forEach(province => console.log(`- ` + province)); // log each province
+
+//log each name with a matching province.
+names.forEach( (names, index) => {
+  const province = provinces[index]
+  console.log(`* ${names} (${province})`)
+});
