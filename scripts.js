@@ -12,7 +12,7 @@ console.log(`PROVINCE:`)
 provinces.forEach(province => console.log(`- ` + province)); // log each province
 
 //log each name with a matching province.
-names.forEach( (names, index) => {
+names.forEach((names, index) => {
   const province = provinces[index]
   console.log(`* ${names} (${province})`)
 });
@@ -28,3 +28,14 @@ console.log(nameLengths);
 // 4. Alphabetically sort the provinces
 const sortedProvinces = provinces.sort();
 console.log(sortedProvinces);
+
+// 5. Filter to remove provinces containing "Cape". Log the count of remaining provinces
+const filteredProvinces = provinces.filter(province => !province.includes("Cape"));
+console.log(`Remaining provinces count: ${filteredProvinces.length}`);
+
+// 6. Create a boolean array using map and some to determine if a name contains the letter 'S'.
+const namesWithS = names.map(name => name.includes("S"));
+console.log(namesWithS);
+const containsS = names.some(name => name.includes("S"));
+console.log(`Does any name contain 'S'? ${containsS}`);
+
