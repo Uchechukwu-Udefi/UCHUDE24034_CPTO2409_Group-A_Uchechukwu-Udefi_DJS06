@@ -39,3 +39,11 @@ console.log(namesWithS);
 const containsS = names.some(name => name.includes("S"));
 console.log(`Does any name contain 'S'? ${containsS}`);
 
+// 7. Using reduce to transform the names array into an object mapping names to their respective provinces.
+const nameProvinceMap = names.reduce((acc, name, index) => {
+  acc[name] = provinces[index];
+  return acc
+}, {});
+
+console.log(nameProvinceMap);
+
