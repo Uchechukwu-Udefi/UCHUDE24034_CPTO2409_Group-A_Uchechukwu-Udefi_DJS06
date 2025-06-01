@@ -47,3 +47,52 @@ const nameProvinceMap = names.reduce((acc, name, index) => {
 
 console.log(nameProvinceMap);
 
+
+// SECOND EXERCISE
+// Advanced Exercises (Single console.log Execution)
+
+console.log(() => {
+
+// 1. Iterate over the products array, logging each product name.
+const productNames = products.map(product => product.product);
+
+// 2. Filter out products with names longer than 5 characters
+const shortNamedProducts = products.filter(product => product.product.length <= 5);
+
+// 3. Filter out products without prices, convert string prices to numbers, and calculate the total price using reduce.
+const totalPrice = products
+  .filter(product => product.price !== undefined && String(product.price).trim() !== '')
+  .map(product => parseFloat(product.price))
+  .reduce((acc, price) => acc + price, 0);
+
+// 4. Use reduce to concatenate all product names into a single string.
+const allProductNames = products.reduce((acc, product) => {
+  return acc + (acc ? ', ' : '') + product.product;
+}, '');
+
+// 5.  Identify the highest and lowest-priced items, returning a string formatted as "Highest: X. Lowest: Y."
+const prices = products
+  .filter(product => product.price !== undefined && String(product.price).trim() !== '')
+  .map(product => parseFloat(product.price));
+
+const highestPrice = Math.max(...prices);
+const lowestPrice = Math.min(...prices);
+
+// 6. Using Object.entries and reduce, recreate the products object with keys 'name' and 'cost', maintaining their original values
+const recreatedProducts = Object.entries(products.reduce((acc, product) => {
+  acc[product.product] = product.price;
+  return acc;
+}, {})).map(([name, cost]) => ({ name, cost }));
+
+return
+  `PRODUCTS: ${productNames.join(", ")}
+  SHORT-NAMED PRODUCTS: ${shortNamedProducts.map(product => product.product).join(", ")}
+  TOTAL PRICE: ${totalPrice}
+  ALL PRODUCT NAMES: ${allProductNames}
+  HIGHEST PRICE: ${highestPrice}. LOWEST PRICE: ${lowestPrice}.
+  RECREATED PRODUCTS: ${JSON.stringify(recreatedProducts)}`.trim()
+;
+
+});
+
+
